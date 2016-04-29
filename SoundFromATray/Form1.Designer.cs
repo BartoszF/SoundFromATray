@@ -15,6 +15,7 @@
         {
             if (disposing && (components != null))
             {
+                trayIcon.Dispose();
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -28,12 +29,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.loop = new System.ComponentModel.BackgroundWorker();
+            this.SuspendLayout();
+            // 
+            // loop
+            // 
+            this.loop.DoWork += new System.ComponentModel.DoWorkEventHandler(this.loop_DoWork);
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.ComponentModel.BackgroundWorker loop;
     }
 }
 
